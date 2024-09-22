@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>새로운 OTT 서비스 구독</title>
+  <link rel="stylesheet" href="landing2.css">
+</head>
+<body>
+  <header>
+    <h1>새로운 OTT 구독 서비스</h1>
+    <p>최고의 콘텐츠, 최고의 구독 혜택!</p>
+    <a href="#subscribe" class="cta">지금 구독하기</a>
+  </header>
+
+  <section id="plans">
+    <h2>구독 플랜</h2>
+    <div class="plan-container">
+      <div class="plan">
+        <h3>Basic Plan</h3>
+        <ul>
+          <li>HD 스트리밍</li>
+          <li>한 대의 기기에서 동시 스트리밍</li>
+          <li>매주 새로운 콘텐츠 업데이트</li>
+        </ul>
+        <div class="price">₩9,900 / 월</div>
+        <a href="#" class="cta">Basic 플랜 구독</a>
+      </div>
+      <div class="plan">
+        <h3>Standard Plan</h3>
+        <ul>
+          <li>Full HD 스트리밍</li>
+          <li>두 대의 기기에서 동시 스트리밍</li>
+          <li>광고 없는 시청</li>
+          <li>매주 새로운 콘텐츠 업데이트</li>
+        </ul>
+        <div class="price">₩14,900 / 월</div>
+        <a href="#" class="cta">Standard 플랜 구독</a>
+      </div>
+      <div class="plan">
+        <h3>Premium Plan</h3>
+        <ul>
+          <li>4K 스트리밍</li>
+          <li>최대 네 대의 기기에서 동시 스트리밍</li>
+          <li>광고 없는 시청</li>
+          <li>독점 콘텐츠 시청 가능</li>
+          <li>매주 새로운 콘텐츠 업데이트</li>
+        </ul>
+        <div class="price">₩19,900 / 월</div>
+        <a href="#" class="cta">Premium 플랜 구독</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <h2>사용자 후기</h2>
+    <div class="slider">
+      <div class="slider-container">
+        <div class="review">정말 최고의 스트리밍 서비스입니다! - A</div>
+        <div class="review">이 서비스 덕분에 언제 어디서나 콘텐츠를 즐길 수 있어요! - B</div>
+        <div class="review">가격 대비 최고의 콘텐츠! - C</div>
+        <div class="review">다양한 콘텐츠가 매주 업데이트 돼요! - D</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="subscribe">
+    <h2>구독하기</h2>
+    <p>지금 가입하고 특별 혜택을 받아보세요!</p>
+    <a href="#" class="cta">구독 시작</a>
+  </section>
+
+  <footer>
+    <p> &copy; 2024 새로운 OTT 서비스</p>
+  </footer>
+
+  <script>
+    let currentIndex = 0;
+    const reviews = document.querySelectorAll('.slider-container .review');
+    const totalReviews = reviews.length;
+    const sliderContainer = document.querySelector('.slider-container');
+
+    function cloneReviews() {
+      for (let i = 0; i < totalReviews; i++) {
+        const clone = reviews[i].cloneNode(true);
+        sliderContainer.appendChild(clone);
+      }
+    }
+
+    function slideReviews() {
+      currentIndex++;
+      if (currentIndex >= totalReviews) {
+        sliderContainer.style.transition = 'none';
+        sliderContainer.style.transform = `translateX(0)`;
+        currentIndex = 0;
+        setTimeout(() => {
+          sliderContainer.style.transition = 'transform 0.5s ease-in-out';
+          slideReviews();
+        }, 0);
+        return;
+      }
+      sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+    cloneReviews();
+    setInterval(slideReviews, 4000);
+  </script>
+</body>
+</html>
